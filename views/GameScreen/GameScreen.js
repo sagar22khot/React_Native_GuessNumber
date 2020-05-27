@@ -6,12 +6,18 @@ import Card from "../../components/Card/Card";
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  const rndNum = Math.floor(Math.random() * (max - min)) + min;
-  if (rndNum === exclude) {
-    generateRandomBetween(min, max, exclude);
-  } else {
-    return rndNum;
-  }
+  var rndNum = 0;
+  const temp = Math.floor(Math.random() * (max - min));
+  // console.log(" ");
+  // console.log("temp", temp);
+  rndNum = temp + min;
+  // console.log("rnd", rndNum);
+  // if (rndNum === exclude) {
+  //   generateRandomBetween(min, max, exclude);
+  // } else {
+  // console.log("rndFFFF", rndNum);
+  return rndNum;
+  // }
 };
 
 const GameScreen = (props) => {
@@ -46,11 +52,19 @@ const GameScreen = (props) => {
     } else {
       currentLow.current = currentGuess;
     }
-    const nextNumber = generateRandomBetween(
+    // console.log(
+    //   currentLow.current,
+    //   " ",
+    //   currentHigh.current,
+    //   " ",
+    //   currentGuess
+    // );
+    var nextNumber = generateRandomBetween(
       currentLow.current,
       currentHigh.current,
       currentGuess
     );
+    console.log("Next: ", nextNumber);
     setCurrentGuess(nextNumber);
     setRounds((curRounds) => curRounds + 1);
   };
