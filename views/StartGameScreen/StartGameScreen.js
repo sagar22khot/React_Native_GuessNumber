@@ -8,10 +8,12 @@ import {
   Keyboard,
   TextInput,
   Alert,
+  Dimensions,
 } from "react-native";
 import Card from "../../components/Card/Card";
 import Colors from "../../constants/colors";
 import InputData from "../../components/InputData/InputData";
+import MainButton from "../../components/MainButton/MainButton";
 import NumberContainer from "../../components/NumberContainer/NumberContainer";
 
 const StartGameScreen = (props) => {
@@ -79,10 +81,9 @@ const StartGameScreen = (props) => {
           <Card style={styles.summaryContainer}>
             <Text>You Selected</Text>
             <NumberContainer>{selectedNumber}</NumberContainer>
-            <Button
-              title="START GAME"
-              onPress={() => props.onStartGame(selectedNumber)}
-            ></Button>
+            <MainButton onPress={() => props.onStartGame(selectedNumber)}>
+              START GAME
+            </MainButton>
           </Card>
         )}
       </View>
@@ -102,7 +103,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   inputContainer: {
-    width: 300,
+    width: "80%",
+    maxWidth: "95%",
+    minWidth: 300,
     maxWidth: "80%",
     alignItems: "center",
   },
@@ -113,7 +116,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   button: {
-    width: 100,
+    // width: 100,
+    width: Dimensions.get("window").width / 4,
   },
   input: {
     width: 50,
